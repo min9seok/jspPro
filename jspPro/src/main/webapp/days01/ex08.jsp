@@ -37,8 +37,8 @@
        ㄷ. service(), get(), post() 메서드를 오버라이딩.
    2) 컴파일 -> ???.class (클래스파일)
    3) /WEB-INF/classes 폴더 안에 반드시 클래스 파일을 넣어둔다.
-   4) 요청 URL 정하고         URL 맵핑
-      ㄱ. web.xml 서블릿 등록/URL 맵핑
+   4) 요청 URL 정하고         URL 매핑
+      ㄱ. web.xml 서블릿 등록/URL 매핑
       ㄴ. 서블릿3.0 ~ @WebServlet 어노테이션으로 처리
    5) 브라우저 -> 요청 URL -> 서블릿 -> 응답
   3. 실습 예제

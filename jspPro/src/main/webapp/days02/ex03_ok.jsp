@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="shortcut icon" href="http://localhost/webPro/images/SiSt.ico">
+<link rel="shortcut icon" href="http://localhost/jspPro/images/SiSt.ico">
 <link rel="stylesheet" href="/jspPro/resources/cdn-main/example.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="/jspPro/resources/cdn-main/example.js"></script>
@@ -21,14 +21,20 @@
 	<a href="#" style="position: absolute;top:30px;">ky Home</a>
 </h1>
 <ul>
-	<li><a href="#">·Î±×ÀÎ</a></li>
-	<li><a href="#">È¸¿ø°¡ÀÔ</a></li>
+	<li><a href="#">ë¡œê·¸ì¸</a></li>
+	<li><a href="#">íšŒì›ê°€ì…</a></li>
 </ul>
 </header>
-<h3><span class="material-symbols-outlined">view_list</span> jsp days00</h3>
+<h3><span class="material-symbols-outlined">view_list</span> jsp days02</h3>
 <div>
  <xmp class="code">
-  KY LOVE  404 ÀÔ´Ï´ç 
+  <%
+   int n = Integer.parseInt( request.getParameter("n"));
+  
+  %>
+  
+  > request.getParameter : <%=n %><br>
+  > EL : ${param.n }<br>
  </xmp>
 
 </div>

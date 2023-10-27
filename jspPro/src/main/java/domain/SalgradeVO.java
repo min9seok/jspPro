@@ -16,4 +16,10 @@ public class SalgradeVO {
 	private int hisal;	
 	private int cnt;
 	
+	@Override
+	public String toString() {
+		return String.format("%d등급   ( %d~%d ) - %d명\n"
+				,this.grade,this.losal,this.hisal,this.cnt);
+	}
+	
 }//class
