@@ -29,33 +29,21 @@
 <h3><span class="material-symbols-outlined">view_list</span> jsp days05</h3>
 <div>
  <xmp class="code">
-  [ jsp 예외처리 방법 ]
-  1. try ~ catch ~ finally 문 사용
-  2. 예외 처리하는 예외 페이지를 지정
-    ㄴ /WEB-INF 폴더 안
-      ㄴ error 폴더
-        ㄴ viewErrorMessage.jsp
-  3. 예외 처리의 우선 순위
-    1) page 지시자 errorPage 
-    2) 예외 타입별 처리 
-    3) 예외 코드별 처리
+  [자바빈(Java Bean)과 jsp:useBean 액션태그]
+  1. 자바빈(Java Bean) == 자바빈즈(Java Beans)
+    JSP 기반 웹 애플리케이션에서
+    정보를 표현(저장,출력)할 때 사용하는 객체
     
-    4) 웹컨테이너가 제공하는 기본 에러 페이지 
+    스프링 빈
+  2. VO, DTO
+  3. 자바빈 규약
+   1) private 필드 선언
+   2) getter, setter 선언
+   3) 직력화가 가능한 클래스 선언
+  4. 자바빈은
+    속성(데이터), 변경 이벤트, 객체 직렬화 하기 위한 표준
  </xmp>
- <%
- String name = null;
-  try{	
-	  name = request.getParameter("name");
-	  name = name.toUpperCase();
-  }catch(NullPointerException e){
-	  name = "익명";
-  }catch(Exception e){
 
-  }
- %>
- name 파라미터값 : <%=name %><br><br>
- 
- <a href="ex1000.jsp">ex1000.jsp</a>
 </div>
 <script>
 </script>

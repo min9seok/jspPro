@@ -1,3 +1,6 @@
+<%@page import="java.util.Date"%>
+<%@page import="days05.MemberInfo"%>
+<%@page import="java.lang.reflect.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -29,33 +32,17 @@
 <h3><span class="material-symbols-outlined">view_list</span> jsp days05</h3>
 <div>
  <xmp class="code">
-  [ jsp 예외처리 방법 ]
-  1. try ~ catch ~ finally 문 사용
-  2. 예외 처리하는 예외 페이지를 지정
-    ㄴ /WEB-INF 폴더 안
-      ㄴ error 폴더
-        ㄴ viewErrorMessage.jsp
-  3. 예외 처리의 우선 순위
-    1) page 지시자 errorPage 
-    2) 예외 타입별 처리 
-    3) 예외 코드별 처리
-    
-    4) 웹컨테이너가 제공하는 기본 에러 페이지 
+  ex05_05.jsp
  </xmp>
- <%
- String name = null;
-  try{	
-	  name = request.getParameter("name");
-	  name = name.toUpperCase();
-  }catch(NullPointerException e){
-	  name = "익명";
-  }catch(Exception e){
 
-  }
- %>
- name 파라미터값 : <%=name %><br><br>
- 
- <a href="ex1000.jsp">ex1000.jsp</a>
+ <jsp:useBean id="mi" class="days05.MemberInfo" scope="page"> </jsp:useBean>
+ <jsp:setProperty property="*" name="mi"/>
+ <jsp:setProperty property="registerDate" name="mi" value="<%=new Date()%>"/>
+아이디 : <jsp:getProperty property="id" name="mi"/><br>
+이름 : <%=mi.getName() %><br>
+비밀번호 : <%=mi.getPasswd() %><br>
+등록일 : <%=mi.getRegisterDate() %><br>
+이메일 : <%=mi.getEmail() %><br>
 </div>
 <script>
 </script>

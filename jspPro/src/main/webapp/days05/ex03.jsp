@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ include file="/WEB-INF/inc/include.jspf" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,34 +29,32 @@
 </header>
 <h3><span class="material-symbols-outlined">view_list</span> jsp days05</h3>
 <div>
+<%-- <%@ include file="/layout/top.jsp" %> --%>
  <xmp class="code">
-  [ jsp 예외처리 방법 ]
-  1. try ~ catch ~ finally 문 사용
-  2. 예외 처리하는 예외 페이지를 지정
-    ㄴ /WEB-INF 폴더 안
-      ㄴ error 폴더
-        ㄴ viewErrorMessage.jsp
-  3. 예외 처리의 우선 순위
-    1) page 지시자 errorPage 
-    2) 예외 타입별 처리 
-    3) 예외 코드별 처리
-    
-    4) 웹컨테이너가 제공하는 기본 에러 페이지 
+  [페이지 모듈화]
+  하나의 웹 사이트(애플리케이션)을 구성하는 페이지
+  상단(Top), 하단(Bottom) 등 모든 웹 페이지의
+  공통적인 부분을 모듈화 시켜서 코드의 중복 제거
+  유지, 보수, 확장 용이
+  
+  모든 웹 사이트 : 상단, 하단
+    ㄴ webapp 폴더 
+      ㄴ layout 폴더
+        ㄴ top.jsp
+          bottom.jsp
+  일정 관리 부분 : 공통 모듈 좌측, 우측
+  
+  [모듈화 처리]
+  1. include 처리자
+  2. jsp: 접두어가 붙은 태그를 액션태그
+     ( jsp:include 액션태그 )
+   -> [ include 지시자 / jsp:include 액션태그 차이점 ]
+  
+  WEB-INF 
+   ㄴ inc 폴더 추가
+    ㄴ include.jspf
  </xmp>
- <%
- String name = null;
-  try{	
-	  name = request.getParameter("name");
-	  name = name.toUpperCase();
-  }catch(NullPointerException e){
-	  name = "익명";
-  }catch(Exception e){
-
-  }
- %>
- name 파라미터값 : <%=name %><br><br>
- 
- <a href="ex1000.jsp">ex1000.jsp</a>
+<%-- <%@ include file="/layout/bottom.jsp" %> --%>
 </div>
 <script>
 </script>

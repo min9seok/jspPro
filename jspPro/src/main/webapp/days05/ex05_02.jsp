@@ -29,33 +29,35 @@
 <h3><span class="material-symbols-outlined">view_list</span> jsp days05</h3>
 <div>
  <xmp class="code">
-  [ jsp 예외처리 방법 ]
-  1. try ~ catch ~ finally 문 사용
-  2. 예외 처리하는 예외 페이지를 지정
-    ㄴ /WEB-INF 폴더 안
-      ㄴ error 폴더
-        ㄴ viewErrorMessage.jsp
-  3. 예외 처리의 우선 순위
-    1) page 지시자 errorPage 
-    2) 예외 타입별 처리 
-    3) 예외 코드별 처리
-    
-    4) 웹컨테이너가 제공하는 기본 에러 페이지 
+  
  </xmp>
- <%
- String name = null;
-  try{	
-	  name = request.getParameter("name");
-	  name = name.toUpperCase();
-  }catch(NullPointerException e){
-	  name = "익명";
-  }catch(Exception e){
+<form action="ex05_05.jsp" method="get">
 
-  }
- %>
- name 파라미터값 : <%=name %><br><br>
- 
- <a href="ex1000.jsp">ex1000.jsp</a>
+  <table border="1" style="width:400px">
+     <tr>
+        <td>아이디</td>
+        <td><input type="text"  name="id" value="admin"></td>
+     </tr>
+     <tr>
+        <td>이름</td>
+        <td><input type="text"  name="name"  value="관리자"></td>
+     </tr>
+     <tr>
+        <td>비밀번호</td>
+        <td><input type="password"  name="passwd" value="1234"></td>
+     </tr>
+     <tr>
+        <td>이메일</td>
+        <td><input type="text"  name="email" value="admin@naver.com"></td>
+     </tr>
+     <tr>
+        <td colspan="2">
+           <input type="submit">
+           <input type="reset">
+        </td>
+     </tr>
+  </table>
+</form>
 </div>
 <script>
 </script>

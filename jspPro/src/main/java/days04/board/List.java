@@ -17,7 +17,7 @@ import days04.board.domain.BoardDTO;
 import days04.board.domain.PageDTO;
 import days04.board.persistence.BoardDAOImpl;
 
-@WebServlet("/cstvsboard/list.htm")
+//@WebServlet("/cstvsboard/list.htm")
 public class List extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
