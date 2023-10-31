@@ -8,7 +8,7 @@ public class MemberInfo implements Serializable {
 	private static final long serialVersionUID = 2490129593045133574L;
 	
 	private String id;
-	private String passwd;
+	private String pwd;
 	private String name;
 	private Date registerDate;
 	private String email;
@@ -19,10 +19,10 @@ public class MemberInfo implements Serializable {
 		this.id = id;
 	}
 	public String getPasswd() {
-		return passwd;
+		return pwd;
 	}
-	public void setPasswd(String passwd) {
-		this.passwd = passwd;
+	public void setPasswd(String pwd) {
+		this.pwd = pwd;
 	}
 	public String getName() {
 		return name;

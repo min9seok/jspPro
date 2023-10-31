@@ -1,0 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<% 
+ // 세션 = 인증처리
+ // 로그인 성공 > auth 세션이름으로 로그인ID 세션값을 저장
+ // 인증 정보를 세션 저장 아이디/권한/ 기타 여러 인증 정보 저장
+ // 클래스 선언 > 객체로 만들어서 세션 저장
+ String sname = "auth";
+ String logonid = null;
+ 
+ logonid = (String)session.getAttribute("auth");
+ 
+%>

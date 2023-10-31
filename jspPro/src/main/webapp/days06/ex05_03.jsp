@@ -1,27 +1,6 @@
-<%@page import="com.util.Cookies"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%
- String id = request.getParameter("id");
- String passwd = request.getParameter("passwd");
- 
- String location = "ex01_default.jsp";
- if(id.equals("admin") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else if(id.equals("hong") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else if(id.equals("park") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else{
-	 location += "?logon=fail";
-	 response.sendRedirect(location);
- }
- 
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,9 +29,36 @@
 <h3><span class="material-symbols-outlined">view_list</span> jsp days06</h3>
 <div>
  <xmp class="code">
-  ex01_logon.jsp
+  EL
+  JSTL
+  Filter
+  ServletListener
  </xmp>
+ <form action="">
+   국어 : <input type="text" name="kor" />
+ </form>
+ kor = ${param.kor }<br>
+ empty = ${ empty param.kor } <br>
+ <hr>
+ <c:if test="${not empty param.kor }">
+   <c:set var="score" value="${Math.floor(param.kor / 10) }" />
+   <c:choose>
+     <c:when test="${score eq 10 or score eq 9 }">수</c:when>
+     <c:when test="${score eq 8 }">우</c:when>
+     <c:when test="${score eq 7 }">미</c:when>
+     <c:when test="${score eq 6 }">양</c:when>
+     <c:otherwise>가</c:otherwise>
+   </c:choose>
+ </c:if>
+<%--   <c:set var="score" value="${ param.kor }"/> --%>
 
+<%-- <c:choose> --%>
+<%--    <c:when test="${score >= 90 && score <= 100}">수</c:when> --%>
+<%--    <c:when test="${score >= 80 && score  < 90}">우</c:when> --%>
+<%--    <c:when test="${score >= 70 && score  < 80}">미</c:when> --%>
+<%--    <c:when test="${score >= 60 && score< 70}">양</c:when> --%>
+<%--    <c:otherwise>가</c:otherwise> --%>
+<%-- </c:choose> --%>
 </div>
 <script>
 </script>

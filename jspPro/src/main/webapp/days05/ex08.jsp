@@ -47,7 +47,7 @@
 // DataSource ds = (DataSource)envContext.lookup("jdbc/myoracle");
 // Connection conn = ds.getConnection();
 
- Connection conn = ConnectionProvider.getConnction();
+ Connection conn = ConnectionProvider.getConnection();
 %>
 conn = <%=conn %><br>
 conn.state = <%=conn.isClosed() %><br>

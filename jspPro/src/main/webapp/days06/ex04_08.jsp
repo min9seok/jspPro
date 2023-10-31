@@ -1,27 +1,7 @@
-<%@page import="com.util.Cookies"%>
+<%@page import="days06.FormatUtil"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%
- String id = request.getParameter("id");
- String passwd = request.getParameter("passwd");
- 
- String location = "ex01_default.jsp";
- if(id.equals("admin") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else if(id.equals("hong") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else if(id.equals("park") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else{
-	 location += "?logon=fail";
-	 response.sendRedirect(location);
- }
- 
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,9 +30,24 @@
 <h3><span class="material-symbols-outlined">view_list</span> jsp days06</h3>
 <div>
  <xmp class="code">
-  ex01_logon.jsp
+  FormatUtil
+  
+   ㄴString number()
+    ㄴString staticnumber()
  </xmp>
-
+ <%
+  long price = 22345;
+  request.setAttribute("price", price);
+ %>
+ price(EL) : ${price } <hr>
+ <%
+  FormatUtil fu = new FormatUtil();
+  request.setAttribute("fu", fu);
+ %>
+ price(EL) : ${fu.number(price,"#,##0")} <hr>
+ price(EL) : ${FormatUtil.staticnumber(price,"#,##0")} <hr>
+ 
+ 
 </div>
 <script>
 </script>

@@ -1,27 +1,6 @@
-<%@page import="com.util.Cookies"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%
- String id = request.getParameter("id");
- String passwd = request.getParameter("passwd");
- 
- String location = "ex01_default.jsp";
- if(id.equals("admin") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else if(id.equals("hong") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else if(id.equals("park") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else{
-	 location += "?logon=fail";
-	 response.sendRedirect(location);
- }
- 
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,7 +29,19 @@
 <h3><span class="material-symbols-outlined">view_list</span> jsp days06</h3>
 <div>
  <xmp class="code">
-  ex01_logon.jsp
+  JSTL( JSP Standard Tag Librarty )
+  - JSP 표준 태그 라이브러리
+  - 많은 개발자가 필요에 의해서 사용자가 정의하는 태그를 만들어서 사용 (커스텀태그)
+  - 표준화한 태그
+  1. JSTL 태그의 5가지 종류
+   1) 코어  - c - 변수 선언, 제어문, URL 처리
+     ex05_03
+     ex05_04
+     ex05_05
+   2) 국제화 - fmt - 숫자,날짜 형식, 지역, 메시지 출력
+   3) XML  - x - XML 처리
+   4) 데이터베이스 - sql -  ex05_02
+   5) 함수  - fn - 문자열 처리, 컬렉션 처리  
  </xmp>
 
 </div>

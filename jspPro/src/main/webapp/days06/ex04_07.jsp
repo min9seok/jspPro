@@ -1,27 +1,8 @@
-<%@page import="com.util.Cookies"%>
+<%@page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%
- String id = request.getParameter("id");
- String passwd = request.getParameter("passwd");
- 
- String location = "ex01_default.jsp";
- if(id.equals("admin") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else if(id.equals("hong") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else if(id.equals("park") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else{
-	 location += "?logon=fail";
-	 response.sendRedirect(location);
- }
- 
-%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,9 +31,27 @@
 <h3><span class="material-symbols-outlined">view_list</span> jsp days06</h3>
 <div>
  <xmp class="code">
-  ex01_logon.jsp
+  EL 객체 메서드 호출
+  EL 객체 정적메서드 호출
+  days06.FormatUtil 클래스 추가
  </xmp>
-
+<%
+ long price = 22345;
+%>
+ price(표현식) = <%=price %><br>
+ price(표현식) = <%= String.format("%,d", price) %><br>
+ <%
+  String pattern = "##,###";
+  DecimalFormat df = new DecimalFormat(pattern);
+ %>
+  price(표현식) = <%=df.format(price)%><br>
+  <hr>
+  <%
+   request.setAttribute("price",price);
+  %>
+  price(EL) = ${requestScope.price }<br>
+  price(EL) = ${price }<br>
+  price(EL) = <fmt:formatNumber pattern="##,###" value="${price }" />
 </div>
 <script>
 </script>

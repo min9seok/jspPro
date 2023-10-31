@@ -1,27 +1,6 @@
-<%@page import="com.util.Cookies"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%
- String id = request.getParameter("id");
- String passwd = request.getParameter("passwd");
- 
- String location = "ex01_default.jsp";
- if(id.equals("admin") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else if(id.equals("hong") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else if(id.equals("park") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else{
-	 location += "?logon=fail";
-	 response.sendRedirect(location);
- }
- 
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,7 +29,11 @@
 <h3><span class="material-symbols-outlined">view_list</span> jsp days06</h3>
 <div>
  <xmp class="code">
-  ex01_logon.jsp
+  코어 라이브러리
+  1. 제어문    : c:if, c:choose, c:forEach 제어문 + c:forTokens X 
+  2. URL 처리 : c:import, c:rediect, c:url
+  3. 변수 지원 : c:set, c:remove
+  4. 기타     : c:catch, c:out(JspWriter에 내용 출력)
  </xmp>
 
 </div>

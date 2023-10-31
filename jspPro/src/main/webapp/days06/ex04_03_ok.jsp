@@ -1,27 +1,10 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.Map.Entry"%>
+<%@page import="java.util.Set"%>
 <%@page import="com.util.Cookies"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%
- String id = request.getParameter("id");
- String passwd = request.getParameter("passwd");
- 
- String location = "ex01_default.jsp";
- if(id.equals("admin") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else if(id.equals("hong") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else if(id.equals("park") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else{
-	 location += "?logon=fail";
-	 response.sendRedirect(location);
- }
- 
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,9 +33,31 @@
 <h3><span class="material-symbols-outlined">view_list</span> jsp days06</h3>
 <div>
  <xmp class="code">
-  ex01_logon.jsp
+  EL cookie 내장 객체  = Map(쿠키이름,쿠키객체)
  </xmp>
-
+ EL user :${cookie.user.value } <br>
+ EL id :${cookie.id.value } <br>
+ EL age :${cookie.age.value } <br>
+ <hr>
+ <%
+  Cookies cookies = new Cookies(request);
+  Set<Entry<String, Cookie>> set = cookies.cookieMap.entrySet();
+  Iterator<Entry<String, Cookie>> ir = set.iterator();
+   while(ir.hasNext()){
+	   Entry<String, Cookie> entry =  ir.next();
+	   String cname = entry.getKey();
+	   Cookie c = entry.getValue();
+	   String cvalue = c.getValue();
+%>
+ <li><%=cname %> : <%= cvalue %></li>
+<%	   
+	   
+   }
+%>
+ <hr>
+ <c:forEach var="entry" items="${cookie }">
+   <li>${entry.key } : ${entry.value.value }</li>
+ </c:forEach>
 </div>
 <script>
 </script>

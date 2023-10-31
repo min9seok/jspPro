@@ -1,27 +1,6 @@
-<%@page import="com.util.Cookies"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%
- String id = request.getParameter("id");
- String passwd = request.getParameter("passwd");
- 
- String location = "ex01_default.jsp";
- if(id.equals("admin") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else if(id.equals("hong") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else if(id.equals("park") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else{
-	 location += "?logon=fail";
-	 response.sendRedirect(location);
- }
- 
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,11 +29,42 @@
 <h3><span class="material-symbols-outlined">view_list</span> jsp days06</h3>
 <div>
  <xmp class="code">
-  ex01_logon.jsp
+  설문 삭제
  </xmp>
-
+ <h2>삭제하기</h2>
+ <form method="POST">
+ <table>
+   <tr>
+     <td colspan="2" align="center">
+       <b>글을 삭제합니다.</b> 
+     </td>
+   </tr>
+   <tr>
+     <td>비밀번호</td>
+     <td><input type="password" name="pwd" size="15" autofocus /></td>
+   </tr>
+   <tr>
+     <td colspan="2" align="center">
+     <input type="submit" value="삭제">&nbsp;&nbsp;&nbsp;
+     <input type="button"onclick="history.back();" value="취소" id="cancel"> 
+     </td>
+   </tr>
+ </table>
+</form>
 </div>
 <script>
+$(function(){
+<%
+ String error = (String)request.getAttribute("error");
+	if(error != null){
+		
+%>
+alert('<%=error%>');
+<%
+	}
+%>
+ 
+});
 </script>
 </body>
 </html>

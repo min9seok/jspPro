@@ -1,8 +1,9 @@
-<%@page import="com.util.Cookies"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ include file="/WEB-INF/inc/session_auth.jspf" %>
+<%
+String id = (String) session.getAttribute("id");
+%>
 <%
 // 세션 삭제(제거)
 // 1) 강제 : 즉시 강제 종료
@@ -11,6 +12,6 @@
 
 %>
 <script type="text/javascript">
- alert("<%=logonid%>님 로그아웃하셨습니다.");
- location.href = "ex01_default.jsp";
+ alert("<%=id%>님 로그아웃하셨습니다.");
+ location.href = "main.jsp";
 </script>

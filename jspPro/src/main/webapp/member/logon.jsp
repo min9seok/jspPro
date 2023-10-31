@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%
+ String path = request.getContextPath();
+ String status = request.getParameter("status");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,30 +21,35 @@
 }
 </style>
 </head>
-<body>
 <header class="sticky">
 <h1 class="main">
-	<a href="#" style="position: absolute;top:30px;">ky Home</a>
+	<a href="#" style="position: absolute;top:30px;">Home</a>
 </h1>
 <ul>
-	<li><a href="#">로그인</a></li>
-	<li><a href="#">회원가입</a></li>
+	<li><a href="main.jsp">메인</a></li>	
 </ul>
 </header>
-<h3><span class="material-symbols-outlined">view_list</span> jsp days06</h3>
+<body>
 <div>
  <xmp class="code">
-  [세션 인증 처리]
-  
-  auth.jspf > session_auth.jspf 생성
-  
-  session.setAttribute("세션이름",객체)
-  session.getAttribute("세션이름")
-  session.invalidate();
+  로그인화면 
  </xmp>
-<a href="ex01_default.jsp">ex01_default</a>
+  <form action="<%=path %>/member/logon.do" method="POST" >    
+    아이디	: <input type="text" name="id" id="id" value="admin" /><br>
+    비밀번호	: <input type="password" name="pwd" id="pwd" value="1234" /><br>     
+    <input type="submit" value="로그인" />        
+  </form>
 </div>
 <script>
+	if( "<%=status%>" == "success") {
+		alert("로그인 성공!")
+		$("form")[0].reset();
+		location.href="/jspPro/member/list.do";
+	}else if ("<%=status%>" == "failed") {
+		alert("로그인 실패!")
+		$("form")[0].reset();
+	}
+	
 </script>
 </body>
 </html>

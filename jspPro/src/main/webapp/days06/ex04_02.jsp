@@ -1,27 +1,6 @@
-<%@page import="com.util.Cookies"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%
- String id = request.getParameter("id");
- String passwd = request.getParameter("passwd");
- 
- String location = "ex01_default.jsp";
- if(id.equals("admin") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else if(id.equals("hong") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else if(id.equals("park") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else{
-	 location += "?logon=fail";
-	 response.sendRedirect(location);
- }
- 
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,9 +29,21 @@
 <h3><span class="material-symbols-outlined">view_list</span> jsp days06</h3>
 <div>
  <xmp class="code">
-  ex01_logon.jsp
+  
  </xmp>
-
+ 요청 URI :<%=request.getRequestURI() %> <br>
+ 요청 URI(EL) :${pageContext.request.requestURI}  <br>
+ <hr>
+ <%
+//  JSP request Scope 에 저장
+  request.setAttribute("name", "홍길동");
+ %>
+  name : <%=request.getAttribute("name") %> <br>
+  name(EL) :${requestScope.name } <br> 
+  name(EL) :${name } <br> 
+ <hr>
+ age : <%= request.getParameter("age") %><br>
+ age(EL) : ${param.age }<br>
 </div>
 <script>
 </script>

@@ -10,7 +10,7 @@ import javax.sql.DataSource;
 
 public class ConnectionProvider {
 	
-	public static Connection getConnction() throws NamingException, SQLException {
+	public static Connection getConnection() throws NamingException, SQLException {
 		Context initContext = new InitialContext();
 		Context envContext  = (Context)initContext.lookup("java:/comp/env");
 		DataSource ds = (DataSource)envContext.lookup("jdbc/myoracle");

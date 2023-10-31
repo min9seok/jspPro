@@ -1,27 +1,6 @@
-<%@page import="com.util.Cookies"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%
- String id = request.getParameter("id");
- String passwd = request.getParameter("passwd");
- 
- String location = "ex01_default.jsp";
- if(id.equals("admin") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else if(id.equals("hong") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else if(id.equals("park") && passwd.equals("1234") ){
-	 session.setAttribute("auth", id);	 	 
-	 response.sendRedirect(location);
- }else{
-	 location += "?logon=fail";
-	 response.sendRedirect(location);
- }
- 
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,8 +29,18 @@
 <h3><span class="material-symbols-outlined">view_list</span> jsp days06</h3>
 <div>
  <xmp class="code">
-  ex01_logon.jsp
+  EL 산술 연산자 사용 가능
  </xmp>
+<%--  ${10+3 } <br> --%>
+<%--  ${10-3 } <br> --%>
+<%--  ${10*3 } <br> --%>
+<%--  ${10/3 } <br> --%>
+<%--  ${10%3 } <br> --%>
+<%--  ${10mod3 } <br> --%>
+<!-- EL 연산자는 기본 덧셈 기능 -->
+<%-- ${"10"+ 10 } <br> --%>
+<%-- ${"한글"+ 10 } <br> NumberFormat Exception --%>
+<%-- ${null+ 10 } <br> --%>
 
 </div>
 <script>
