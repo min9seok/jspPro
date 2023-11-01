@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.util.ConnectionProvider;
 import com.util.DBConn;
@@ -19,7 +20,7 @@ public class LogonHandler implements CommandHandler{
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-	
+		HttpSession session = request.getSession(true);
 		String method = request.getMethod(); // GET POST
 		if (method.equals("GET")) {
 			System.out.println("LogonHandler doGet start");
@@ -34,14 +35,12 @@ public class LogonHandler implements CommandHandler{
 			String name = request.getParameter("name");
 			String id = request.getParameter("id");
 			String pwd = request.getParameter("pwd");
-			String email = request.getParameter("email");
-			ArrayList<MemberDTO> list = null;
-			MemberDTO dto = new MemberDTO(name, id, pwd, email);			
+			String email = request.getParameter("email");			
+			MemberDTO vo = new MemberDTO(name, id, pwd, email);			
 			Connection conn = ConnectionProvider.getConnection();
 			MemberDAOImpl dao = new MemberDAOImpl(conn);
 				try {
-					list = dao.logon(dto);					
-		
+					vo = dao.logon(id, pwd);					
 					rowCount = dao.logonchk(id, pwd);
 					System.out.println(rowCount);
 				} catch (Exception e) {					
@@ -49,11 +48,9 @@ public class LogonHandler implements CommandHandler{
 					e.printStackTrace();
 				}
 			conn.close();
-			request.getSession().setAttribute("id", id);
-			request.getSession().setAttribute("pwd", pwd);
-			request.getSession().setAttribute("name", name);
-			request.getSession().setAttribute("email", email);
-			
+			session.setAttribute("vo", vo);	
+			session.setAttribute("id", id);
+
 			String location = "/jspPro/member/logon.do";
 			location += rowCount == 1 ? "?status=success" : "?status=failed";
 			response.sendRedirect(location);		

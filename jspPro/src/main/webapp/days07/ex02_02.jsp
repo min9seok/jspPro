@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%
- String id = (String) session.getAttribute("id");
-%>
 
 <!DOCTYPE html>
 <html>
@@ -23,30 +20,24 @@
 <body>
 <header class="sticky">
 <h1 class="main">
-	<a href="#" style="position: absolute;top:30px;">Home</a>
+	<a href="#" style="position: absolute;top:30px;">ky Home</a>
 </h1>
-<c:choose>
-<c:when test="${empty id }">
-<ul>    
-	<li><a href="logon.jsp">로그인</a></li>
-	<li><a href="join.jsp">회원가입</a></li>
-</ul>
-</c:when>
-<c:otherwise>
 <ul>
-       ${vo.name}님 환영합니다<br>
-       <a href="logout.jsp">로그아웃</a>
+	<li><a href="#">로그인</a></li>
+	<li><a href="#">회원가입</a></li>
 </ul>
-</c:otherwise>
-</c:choose>
 </header>
-<h3><span class="material-symbols-outlined">view_list</span> jsp days00</h3>
+<h3><span class="material-symbols-outlined">view_list</span> jsp days07</h3>
 <div>
  <xmp class="code">
-  메인 화면 
+  
  </xmp>
- <a href="/jspPro/member/list.do">게시판 이동</a><br>
-
+ <form action="ex02_02_ok.jsp" method="POST"   >
+  한글이름 : <input type="text" value="발렌타인" name="name" /> <br>
+  나이 : <input type="text" value="30" name="age" /><br>
+  <input type="submit" />
+ </form>
+</div>
 <script>
 </script>
 </body>

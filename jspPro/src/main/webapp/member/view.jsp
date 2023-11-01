@@ -40,7 +40,7 @@
 </c:when>
 <c:otherwise>
 <ul>
-       [ <%= id %> ]님 환영합니다<br>
+       ${vo.name}  님 환영합니다<br>
        <a href="logout.jsp">로그아웃</a>
 </ul>
 </c:otherwise>
@@ -76,7 +76,7 @@
      <tr>
        <td colspan="4" align="center">
        <c:choose>
-         <c:when test="${dto.writer eq id }">
+         <c:when test="${dto.writer eq id or id eq 'admin' }">
           <a href="<%=path%>/member/edit.do?seq=${dto.seq}">수정하기</a>
           <a href="<%=path%>/member/delete.do?seq=${dto.seq}">삭제하기</a>
           <input type="button" id="modal" value="모달삭제" />

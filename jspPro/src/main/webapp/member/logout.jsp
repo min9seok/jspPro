@@ -12,6 +12,6 @@ String id = (String) session.getAttribute("id");
 
 %>
 <script type="text/javascript">
- alert("<%=id%>님 로그아웃하셨습니다.");
+ alert("로그아웃하셨습니다.");
  location.href = "main.jsp";
 </script>

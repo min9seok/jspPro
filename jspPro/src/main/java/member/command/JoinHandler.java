@@ -4,6 +4,7 @@ import java.sql.Connection;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.util.ConnectionProvider;
 import com.util.DBConn;
@@ -18,7 +19,7 @@ public class JoinHandler implements CommandHandler{
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-	
+		HttpSession session = request.getSession(true);
 		String method = request.getMethod(); // GET POST
 		if (method.equals("GET")) {
 			System.out.println("JoinHandler doGet start");
@@ -45,6 +46,7 @@ public class JoinHandler implements CommandHandler{
 					e.printStackTrace();					
 				}
 			conn.close();
+
 			// 포워딩x, 리다이렉트 클라이언트에서 다시 요청하는것 contextPath 줘야함
 				String location = "/jspPro/member/join.do";
 				location += rowCount == 1 ? "?write=success" : "?write=failed";

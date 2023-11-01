@@ -48,8 +48,7 @@
 	}else if ("<%=status%>" == "failed") {
 		alert("로그인 실패!")
 		$("form")[0].reset();
-	}
-	
+	}	
 </script>
 </body>
 </html>

@@ -37,7 +37,7 @@
 </c:when>
 <c:otherwise>
 <ul>
-       [ <%= id %> ]님 환영합니다<br>
+       ${vo.name}  님 환영합니다<br>
        <a href="logout.jsp">로그아웃</a>
 </ul>
 </c:otherwise>

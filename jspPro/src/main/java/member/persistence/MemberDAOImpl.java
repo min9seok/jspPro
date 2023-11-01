@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import member.domain.BoardDTO;
 import member.domain.MemberDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -40,8 +41,8 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public ArrayList<MemberDTO> logon(MemberDTO dto) throws Exception {
-		String sql = "SELECT name,id,pwd,email "
+	public MemberDTO logon(String id, String pwd) throws Exception {
+		String sql = "SELECT name, id, pwd, email "
 				+ " FROM board_member "
 				+ " WHERE id = ? "
 				+ " AND pwd = ? ";							
@@ -50,10 +51,8 @@ public class MemberDAOImpl implements MemberDAO {
 		PreparedStatement pstmt = null;
 		ArrayList<MemberDTO> list = null;			
 		MemberDTO vo = null;			
-		String name=null;
-		String id=null;
-		String pwd=null;
-		String email=null;	
+		String name;
+		String email;	
 		System.out.println(sql);
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -61,15 +60,11 @@ public class MemberDAOImpl implements MemberDAO {
 			pstmt.setString(2,pwd);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				list = new ArrayList();
-				do {											
-					vo = MemberDTO.builder()
-							.name(name)
-							.id(id)
-							.pwd(pwd)
-							.email(email).build();							
-					list.add(vo);
-				} while (rs.next());			
+				vo = MemberDTO.builder()						
+						.name(rs.getString("name"))
+						.id(rs.getString("id"))
+						.pwd(rs.getString("pwd"))
+						.email(rs.getString("email")).build();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -81,7 +76,7 @@ public class MemberDAOImpl implements MemberDAO {
 				e.printStackTrace();
 			}
 		}	
-		return list;		
+		return vo;		
 	}
 
 	@Override

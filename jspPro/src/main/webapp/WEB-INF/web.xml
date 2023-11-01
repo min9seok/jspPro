@@ -21,21 +21,33 @@
     <res-auth>Container</res-auth>
   </resource-ref>
 
-  <servlet>
-    <description>days06 MVC 패턴 컨트롤러</description>
-    <servlet-name>dispatcher</servlet-name>
-<!--     <servlet-class>days06.mvc.controller.DispatcherServlet</servlet-class> -->
-	<servlet-class>member.controller.DispatcherServlet</servlet-class>
+  <filter>
+    <description>days07.POST.인코딩</description>
+    <filter-name>characterEncodingFilter</filter-name>
+    <filter-class>com.filter.CharacterEncodingFilter</filter-class>  
     <init-param>
-      <description>URL과 Handler 등록 경로</description>
-      <param-name>path</param-name>
-      <param-value>/WEB-INF/commandHandler.properties</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>  
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>dispatcher</servlet-name>
-    <url-pattern>*.do</url-pattern>
-  </servlet-mapping>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>  
+  </filter>
+  <filter-mapping>
+    <filter-name>characterEncodingFilter</filter-name>
+<!--     url-pattern /  /* 차이점 -->
+<!--     <url-pattern>/</url-pattern> -->
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  
+  <filter>
+    <description>days07.POST.인증,권한</description>
+    <filter-name>loginCheckFilter</filter-name>
+    <filter-class>com.filter.LoginCheckFilter</filter-class>  
+  </filter>
+  <filter-mapping>
+    <filter-name>loginCheckFilter</filter-name>
+    <url-pattern>/days07/admin/*</url-pattern>
+    <url-pattern>/days07/board/write.jsp</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
 
 </web-app>

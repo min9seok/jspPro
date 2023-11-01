@@ -3,7 +3,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
  String path = request.getContextPath();
- String id = (String) session.getAttribute("id");
+//  String id = (String) session.getAttribute("id");
+ String id = (String) request.getSession().getAttribute("id");
+ String name = (String) request.getSession().getAttribute("name");
+
 %>
 <!DOCTYPE html>
 <html>
@@ -42,10 +45,10 @@
 </ul>
 </c:when>
 <c:otherwise>
-<ul>
-       [ <%= id %> ]님 환영합니다<br>
+<ul>       
+        ${vo.name}  님 환영합니다<br>     
        <a href="logout.jsp">로그아웃</a>
-        <%= id %> <br>
+   
 </ul>
 </c:otherwise>
 </c:choose>

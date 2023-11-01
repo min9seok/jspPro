@@ -3,6 +3,7 @@ package days05;
 import java.io.Serializable;
 import java.util.Date;
 
+// 자바빈(Bean)
 public class MemberInfo implements Serializable {
 
 	private static final long serialVersionUID = 2490129593045133574L;
