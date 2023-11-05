@@ -1,5 +1,7 @@
 package domain;
 
+import java.sql.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,6 +18,7 @@ public class EmpVO {
 	private String job;
 	private int mgr;
 	private String hiredate;
+//	private Date hiredate;
 	private double sal;
 	private double comm;
 	private int deptno;

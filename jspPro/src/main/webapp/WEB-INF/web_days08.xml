@@ -30,21 +30,24 @@
       <param-value>UTF-8</param-value>
     </init-param>  
   </filter>
-
-    <servlet>
-    <description>days09 MVC 패턴 답변형 게시판 컨트롤러</description>
-    <servlet-name>dispatcher</servlet-name>
-    <servlet-class>days09.replyboard.controller.DispatcherServlet</servlet-class>
-    <init-param>
-      <description>URL과 Handler 등록 경로</description>
-      <param-name>path</param-name>
-      <param-value>/days09/replyboard/commandHandler.properties</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>  
+  
+  <servlet>
+    <description>서블릿3.1 파일업로드 테스트</description>
+    <servlet-name>uploadServlet</servlet-name>
+    <servlet-class>days08.UploadServlet</servlet-class>
+    <multipart-config>
+<!--     업로드 파일 임시 저장 위치, 기본값 "" -->
+      <location>C:\apache-tomcat-8.5.93\temp</location>
+<!--       업로드 가능한 최대 파일 크기 (Byte) 기본값 -1  -->
+      <max-file-size>-1</max-file-size>
+      <max-request-size>-1</max-request-size>                          
+<!--       1024 크기 보다 업로드 파일 크기가 클 때 임시 파일 생성 -->
+      <file-size-threshold>1024</file-size-threshold>
+    </multipart-config>
   </servlet>
   <servlet-mapping>
-    <servlet-name>dispatcher</servlet-name>
-    <url-pattern>*.do</url-pattern>
+    <servlet-name>uploadServlet</servlet-name>
+    <url-pattern>/days08/upload</url-pattern>
   </servlet-mapping>
   
 </web-app>
